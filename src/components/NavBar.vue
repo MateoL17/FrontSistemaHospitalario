@@ -1,4 +1,12 @@
 <script>
+/*
+ * Author: Mateo Lasso
+ * Fecha: 7-12-2025
+ * Versión: 1.0
+ * Descripción: Este componente denominado NavBar es la barra de navegación principal
+ *              de la aplicación que proporciona acceso a las diferentes secciones.
+ * */
+
 export default {
   name: 'NavBar'
 }

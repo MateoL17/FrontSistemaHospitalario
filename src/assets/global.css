@@ -1,4 +1,12 @@
-/* Estilos globales */
+/*
+ * Author: Mateo Lasso
+ * Fecha: 7-12-2025
+ * Versión: 1.0
+ * Descripción: Este archivo global.css contiene los estilos globales
+ *              aplicados a toda la aplicación del sistema hospitalario.
+ * */
+
+/* Variables CSS personalizadas */
 :root {
     --primary-color: #667eea;
     --secondary-color: #764ba2;

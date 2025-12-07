@@ -1,4 +1,12 @@
 <script>
+/*
+ * Author: Mateo Lasso
+ * Fecha: 7-12-2025
+ * Versión: 1.0
+ * Descripción: Este componente denominado HomeView es la página de inicio
+ *              que presenta información general sobre el sistema hospitalario.
+ * */
+
 export default {
   name: 'HomeView'
 }

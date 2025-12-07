@@ -2,9 +2,21 @@
 import { ref, computed, reactive, watch } from 'vue';
 import PacienteService from '@/services/api';
 
+/*
+ * Author: Mateo Lasso
+ * Fecha: 7-12-2025
+ * Versión: 1.0
+ * Descripción: Este componente denominado PacienteForm es el formulario
+ *              reutilizable para crear y editar pacientes en el sistema.
+ * */
+
 export default {
   name: 'PacienteForm',
   props: {
+    /*
+     * Prop que recibe los datos del paciente a editar (null para creación)
+     * @type {Object|null}
+     * */
     paciente: {
       type: Object,
       default: null
@@ -29,7 +41,9 @@ export default {
       Object.assign(formData, props.paciente);
     }
 
-    // Validar cédula en tiempo real
+    /*
+     * Método que valida la cédula en tiempo real
+     * */
     const validateCedula = () => {
       if (!formData.cedula) {
         errors.cedula = 'La cédula es requerida';
@@ -49,7 +63,10 @@ export default {
       delete errors.cedula;
     };
 
-    // Validar formulario completo
+    /*
+     * Método que valida todo el formulario antes del envío
+     * @return {boolean} true si el formulario es válido, false en caso contrario
+     * */
     const validateForm = () => {
       let valid = true;
       const newErrors = {};
@@ -90,7 +107,10 @@ export default {
       return valid;
     };
 
-    // Computed para validación del formulario
+    /*
+     * Computed property que verifica si el formulario es válido
+     * @return {boolean} true si todos los campos requeridos son válidos
+     * */
     const isFormValid = computed(() => {
       return formData.cedula &&
           formData.cedula.length === 10 &&
@@ -104,7 +124,10 @@ export default {
           formData.edad <= 120;
     });
 
-    // Manejar envío del formulario
+    /*
+     * Método que maneja el envío del formulario
+     * @return {Promise} Promesa que se resuelve cuando se completa el envío
+     * */
     const handleSubmit = async () => {
       if (!validateForm()) {
         return;

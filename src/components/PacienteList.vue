@@ -4,6 +4,14 @@ import PacienteService from '@/services/api';
 import PacienteForm from './PacienteForm.vue';
 import Swal from 'sweetalert2';
 
+/*
+ * Author: Mateo Lasso
+ * Fecha: 7-12-2025
+ * Versión: 1.0
+ * Descripción: Este componente denominado PacienteList es la interfaz principal para gestionar
+ *              la lista de pacientes, incluyendo operaciones CRUD, filtros y visualización.
+ * */
+
 export default {
   name: 'PacienteList',
   components: {
@@ -16,15 +24,26 @@ export default {
     const filter = ref('all');
     const loading = ref(false);
 
-    // Computed properties
+    /*
+     * Computed property que calcula el número de pacientes activos
+     * @return Número de pacientes con estado activo
+     * */
     const pacientesActivos = computed(() =>
         pacientes.value.filter(p => p.activo).length
     );
 
+    /*
+     * Computed property que calcula el número de pacientes inactivos
+     * @return Número de pacientes con estado inactivo
+     * */
     const pacientesInactivos = computed(() =>
         pacientes.value.filter(p => !p.activo).length
     );
 
+    /*
+     * Computed property que filtra los pacientes según el filtro seleccionado
+     * @return Lista filtrada de pacientes
+     * */
     const filteredPacientes = computed(() => {
       switch (filter.value) {
         case 'active':
@@ -36,14 +55,26 @@ export default {
       }
     });
 
-    // Métodos de estilo
+    /*
+     * Método que devuelve la clase CSS para una fila de paciente
+     * @param paciente Parámetro que define el objeto Paciente a evaluar
+     * @return Cadena con la clase CSS correspondiente
+     * */
     const getRowClass = (paciente) =>
         !paciente.activo ? 'table-secondary paciente-inactivo' : '';
 
+    /*
+     * Método que devuelve la clase CSS para el badge de estado
+     * @param activo Parámetro que define el estado del paciente
+     * @return Cadena con la clase CSS del badge
+     * */
     const getEstadoBadgeClass = (activo) =>
         activo ? 'badge bg-success' : 'badge bg-danger';
 
-    // Cargar pacientes
+    /*
+     * Método que carga todos los pacientes desde el servidor
+     * @return Promesa que se resuelve cuando se completan los pacientes
+     * */
     const loadPacientes = async () => {
       loading.value = true;
       try {
@@ -59,13 +90,20 @@ export default {
       }
     };
 
-    // Editar paciente
+    /*
+     * Método que prepara un paciente para edición
+     * @param paciente Parámetro que define el objeto Paciente a editar
+     * */
     const editPaciente = (paciente) => {
       editingPaciente.value = { ...paciente };
       showForm.value = true;
     };
 
-    // Manejar guardar (crear/actualizar)
+    /*
+     * Método que maneja el guardado de pacientes (crear o actualizar)
+     * @param pacienteData Parámetro que define los datos del paciente a guardar
+     * @return Promesa que se resuelve cuando se completa la operación
+     * */
     const handleSave = async (pacienteData) => {
       try {
         if (editingPaciente.value) {
@@ -92,7 +130,12 @@ export default {
       }
     };
 
-    // Activar paciente (para pacientes inactivos)
+    /*
+     * Método que activa un paciente inactivo
+     * @param cedula Parámetro que define el número de cédula del paciente
+     * @param nombre Parámetro que define el nombre del paciente
+     * @return Promesa que se resuelve cuando se completa la activación
+     * */
     const activarPaciente = async (cedula, nombre) => {
       const result = await Swal.fire({
         title: '¿Activar paciente?',
@@ -120,7 +163,12 @@ export default {
       }
     };
 
-    // Eliminar paciente (BORRADO FÍSICO)
+    /*
+     * Método que solicita confirmación para eliminar permanentemente un paciente
+     * @param cedula Parámetro que define el número de cédula del paciente
+     * @param nombre Parámetro que define el nombre del paciente
+     * @return Promesa que se resuelve cuando se completa la eliminación
+     * */
     const confirmDelete = async (cedula, nombre) => {
       const result = await Swal.fire({
         title: '¿Eliminar paciente PERMANENTEMENTE?',
@@ -149,7 +197,9 @@ export default {
       }
     };
 
-    // Cargar pacientes al montar el componente
+    /*
+     * Hook de ciclo de vida que carga los pacientes cuando el componente se monta
+     * */
     onMounted(loadPacientes);
 
     return {

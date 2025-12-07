@@ -1,6 +1,14 @@
 <script>
 import NavBar from '@/components/NavBar.vue';
 
+/*
+ * Author: Mateo Lasso
+ * Fecha: 7-12-2025
+ * Versión: 1.0
+ * Descripción: Este componente denominado App es el componente raíz principal
+ *              de la aplicación Vue que contiene la barra de navegación y el router.
+ * */
+
 export default {
   name: 'App',
   components: {
