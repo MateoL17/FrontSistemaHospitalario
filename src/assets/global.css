@@ -1,0 +1,118 @@
+/* Estilos globales */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-size: 16px;
+}
+
+/* Estilos para tablas */
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    cursor: pointer;
+}
+
+/* Estilos para modales */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Animaciones */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Utilidades */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Estilos para pacientes */
+.paciente-inactivo {
+    color: #6c757d !important;
+}
+
+.paciente-inactivo:hover {
+    color: #495057 !important;
+}
+
+/* Badges personalizados */
+.badge-activo {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.badge-inactivo {
+    background: linear-gradient(135deg, #dc3545, #fd7e14);
+    color: white;
+}
+
+/* Animaciones */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Estilos para tablas */
+.table-hover tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Estilos para modales */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
